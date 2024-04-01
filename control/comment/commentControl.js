@@ -5,6 +5,9 @@ const appEr = require("../../utils/appEr");
 const commentcreatedControl = async (req, res, next) => {
   try {
     const { message } = req.body;
+    if (!message) {
+      return res.redirect(`/api/v1/posts/${req.params.id}`);
+    }
     console.log(message);
     const user = req.session.userId;
     const postfound = await Posts.findById(req.params.id);
