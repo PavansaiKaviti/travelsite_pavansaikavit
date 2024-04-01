@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/e00551a653.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/form.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>updateComment</title>
+  </head>
+  <body>
+    <%- include("../partials/header.ejs") %>
+    <div class="form-container">
+      <!-- icon -->
+      <h1>Comment update</h1>
+      <p>
+        <!-- lock icon -->
+        <i class="fas fa-lock"></i>
+      </p>
+      <form
+        action="/api/v1/comment/<%= commentfound?._id %>?_method=PUT&postId=<%= commentfound?.post %>"
+        method="post"
+      >
+        <label for="email">update comment</label>
+        <input
+          type="text"
+          name="message"
+          value="<%= commentfound?.message %>"
+          id="email"
+        />
+        <button type="submit">Update</button>
+      </form>
+    </div>
+    <%- include("../partials/footer.ejs") %>
+  </body>
+</html>

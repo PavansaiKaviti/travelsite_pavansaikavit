@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f2f2f2;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.profile-container header {
+  padding: 20px;
+  border-bottom: 1px solid #e6e6e6;
+  height: 30vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.profile-img img {
+  width: 250px;
+  height: 250px;
+  border-radius: 1px;
+  border: 2px solid #fff;
+  position: absolute;
+  margin-top: -20px;
+  top: 350px;
+  left: 20px;
+}
+.profile-img .fas {
+  position: absolute;
+  /* margin-top: 117px; */
+  top: 550px;
+  /* margin-left: 90px; */
+  left: 240px;
+  font-size: 20px;
+  color: #fff;
+  background-color: #1da1f2;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.profile-container .icons-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 10vh;
+  top: 250px;
+  padding: 0 20px;
+  position: absolute;
+  right: 0;
+  top: 100px;
+}
+
+.profile-container .icons-container .fas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 25px;
+  margin-right: 10px;
+}
+
+.personal-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 600px;
+  margin-right: auto;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 50px;
+  width: 40%;
+  padding: 20px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+.profile-container .details {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  padding: 4px;
+}
+
+.details-wrapper {
+  margin-left: 100px;
+  margin-right: auto;
+}
+
+.details .fas {
+  margin-right: 10px;
+  color: #1da1f2;
+}
+.personal-container .details-wrapper .key_position {
+  position: absolute;
+  top: 80px;
+  right: px;
+}
+@media (max-width: 674px) {
+  .profile-container .icons-container {
+    top: 280px;
+  }
+}
+@media (max-width: 674px) {
+  .personal-container {
+    margin-left: 50px;
+    width: 80%;
+    padding: 20px;
+  }
+  .details-wrapper {
+    margin-left: 30px;
+    margin-right: 10px;
+  }
+}

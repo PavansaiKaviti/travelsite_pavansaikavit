@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/e00551a653.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/postDetails.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Responsive design</title>
+  </head>
+  <body>
+    <!-- nav -->
+    <%- include("../partials/header.ejs") %>
+    <!-- content -->
+    <section class="container-flex">
+      <!-- main -->
+      <main>
+        <article class="post-content">
+          <img
+            src="<%= postfound?.image %>"
+            alt="postimage"
+            class="post-image"
+          />
+          <% if (postfound.user._id.toString()===userId.toString()) { %>
+          <div class="post-details-info">
+            <a href="/api/v1/posts/update-post/<%=postfound?._id%>">
+              <i class="fas fa-edit"></i>
+            </a>
+            <form
+              action="/api/v1/posts/<%=postfound?._id%>?_method=DELETE"
+              method="post"
+            >
+              <button><i class="fas fa-trash-alt"></i></button>
+            </form>
+          </div>
+          <% } %>
+          <p></p>
+          <h1 class="post-title"><%= postfound?.title %></h1>
+          <p class="post-body"><%= postfound?.description %></p>
+        </article>
+        <!-- Comment form -->
+        <div class="comment-form">
+          <h2>Leave a comment</h2>
+          <form action="/api/v1/comment/<%= postfound?._id%>" method="POST">
+            <div class="form-group">
+              <input type="text" name="message" id="name" />
+            </div>
+            <button type="submit" class="btn">Submit</button>
+          </form>
+        </div>
+
+        <!-- comments -->
+        <div class="comments">
+          <h2>Comments</h2>
+          <% postfound?.comments.forEach((comment)=>{%>
+          <div class="comment">
+            <div class="comment-info">
+              <img
+                src="<%=comment?.user?.profileImage%>"
+                alt="author"
+                class="comment-author-image"
+              />
+              <div class="comment-author">
+                <h4><%=comment?.user?.fullname%></h4>
+                <span><%=comment?.createdAt?.toLocaleDateString()%></span>
+              </div>
+            </div>
+            <div class="comment-body">
+              <p><%= comment.message %></p>
+              <!-- delete/update icon -->
+              <% if (comment.user._id.toString()===userId.toString()) { %>
+              <div class="post-details-info">
+                <a
+                  href="/api/v1/comment/<%= comment?._id %>"
+                  class="comment-update"
+                >
+                  <i class="fas fa-edit"></i>
+                </a>
+                <form
+                  action="/api/v1/comment/<%=comment._id%>?_method=DELETE&postId=<%= postfound?._id %>"
+                  class="comment-delete"
+                  method="post"
+                >
+                  <button type="submit">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </form>
+              </div>
+              <% } %>
+            </div>
+          </div>
+          <%}) %>
+        </div>
+      </main>
+      <!-- aside -->
+      <aside class="sidebar">
+        <div class="about-me">
+          <h2>About The Author</h2>
+          <img
+            class="avatar"
+            src="<%= postfound?.user?.profileImage %>"
+            alt="img"
+          />
+          <h2 class="about-name"><%=postfound?.user?.fullname %></h2>
+          <small>FullStack Web Developer</small>
+          <p class="about-me-bio">
+            Its sometimes her behaviour are contented. Do listening am eagerness
+            oh objection collected. Together gay feelings continue juvenile had
+            off one. Unknown may service subject her letters one bed. Child
+            years noise ye in forty. Loud in this in both hold. My entrance me
+            is disposal bachelor remember relation.
+          </p>
+        </div>
+
+          <!-- <h1 class="post-title">Start Here</h1>
+          <img src="./images/post4.jpg" alt="" class="post-image" />
+          <p class="post-info">
+            <span class="post-author">
+              <i class="fas fa-user"></i>
+              <a href="#">John Doe</a>
+            </span>
+            <span class="post-date">
+              <i class="far fa-calendar-alt"></i>
+              <time datetime="2020-01-01">January 1, 2020</time>
+            </span>
+          </p>
+          <p class="post-body">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia
+            itaque inventore culpa placeat! Cum nam optio, labore, voluptas sunt
+            quam rem cupiditate laboriosam amet reiciendis velit doloribus eum!
+            Repudiandae, odio?
+          </p>
+          <a href="/" class="post-read-more">Continue Reading...</a> -->
+        </div>
+      </aside>
+    </section>
+    <!-- footer -->
+    <%- include("../partials/footer.ejs") %>
+  </body>
+</html>
