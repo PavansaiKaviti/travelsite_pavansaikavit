@@ -63,7 +63,7 @@ app.use("/api/v1/comment", commentRouter);
 app.use(globalErrMiddleware);
 
 //server listing port
-const port = 3000;
+const port = process.env.domain || 3000;
 app.listen(port, () => {
   try {
     console.log(`server starts at : http://localhost:${port}`);
