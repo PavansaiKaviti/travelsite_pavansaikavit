@@ -8,7 +8,6 @@ const commentcreatedControl = async (req, res, next) => {
     if (!message) {
       return res.redirect(`/api/v1/posts/${req.params.id}`);
     }
-    console.log(message);
     const user = req.session.userId;
     const postfound = await Posts.findById(req.params.id);
     const userfound = await User.findById(user);
