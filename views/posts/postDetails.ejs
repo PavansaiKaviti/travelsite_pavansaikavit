@@ -107,16 +107,16 @@
       <!-- aside -->
       <aside class="sidebar">
         <div class="about-me">
-          <h2>About The Author</h2>
+          <h2>User</h2>
           <img
             class="avatar"
             src="<%= postfound?.user?.profileImage %>"
             alt="img"
           />
           <h2 class="about-name"><%=postfound?.user?.fullname %></h2>
-          <small>FullStack Web Developer</small>
+          
           <p class="about-me-bio">
-            <%= postfound?.description%>
+            email: <%= postfound?.user?.email> %>
           </p>
         </div>
           <!-- <h1 class="post-title">Start Here</h1>
