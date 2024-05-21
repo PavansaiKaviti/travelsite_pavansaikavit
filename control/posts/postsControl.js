@@ -6,7 +6,6 @@ const postcreatedControl = async (req, res, next) => {
   try {
     const { title, description, category } = req.body;
     const foundUser = await User.findById(req.session.userId);
-    console.log(req.file);
     if (title && description && category && req.file.path) {
       const createdpost = await Posts.create({
         title,
